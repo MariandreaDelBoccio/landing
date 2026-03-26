@@ -7,7 +7,7 @@ const route = useRoute()
 
 const navigationLinks = [
   { label: 'About', to: '/about' },
-  { label: 'Services', to: '/#services' },
+  { label: 'Services', to: '/services' },
   { label: 'Blog', to: '/blog' },
   { label: 'Contact', to: '/contact' },
 ]
@@ -28,7 +28,7 @@ const isActiveLink = (to: string) => {
 
 const headerClass = computed(() => {
   const isHome = route.path === '/'
-  if (isHome && !isScrolled.value) return 'bg-transparent border-transparent backdrop-blur-0'
+  if (isHome && !isScrolled.value) return 'bg-white/50 backdrop-blur-sm'
   return 'bg-white/90 backdrop-blur-md border-b border-slate-200/70'
 })
 
@@ -59,7 +59,7 @@ watch(
 <template>
   <div class="min-h-screen bg-white text-slate-800 antialiased">
     <header
-      class="fixed top-0 left-0 right-0 z-40 w-full transition-colors duration-300"
+      class="fixed top-0 left-0 right-0 z-40 w-full"
       :class="headerClass"
     >
       <nav class="mx-auto flex h-16 w-full items-center px-4 sm:px-6 lg:px-8">
@@ -79,11 +79,11 @@ watch(
           <li v-for="link in navigationLinks" :key="link.to">
             <RouterLink
               :to="link.to"
-              class="text-sm font-bold uppercase tracking-widest transition-colors"
+              class="text-sm font-black uppercase tracking-widest transition-colors"
               :class="
                 isActiveLink(link.to)
-                  ? 'text-primary'
-                  : 'text-slate-600 hover:text-primary'
+                  ? 'text-secondary'
+                  : 'text-primary hover:text-secondary'
               "
             >
               {{ link.label }}
@@ -96,7 +96,7 @@ watch(
             href="https://www.linkedin.com/"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex h-9 w-9 items-center justify-center rounded-md bg-white/60 ring-1 ring-slate-200 text-slate-700 transition hover:bg-white"
+            class="inline-flex h-6 w-6 items-center justify-center rounded-md bg-primary ring-1 ring-slate-200 text-white transition hover:bg-secondary font-bold"
             aria-label="LinkedIn"
           >
             in
