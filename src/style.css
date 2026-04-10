@@ -26,6 +26,13 @@
 @tailwind utilities;
 
 @layer base {
+  button:not(:disabled),
+  [type='button']:not(:disabled),
+  [type='submit']:not(:disabled),
+  [type='reset']:not(:disabled) {
+    cursor: pointer;
+  }
+
   html {
     scroll-behavior: smooth;
   }
@@ -49,7 +56,163 @@
 
 @layer components {
   .fade-in-section {
-    @apply opacity-0 translate-y-3 animate-[fadeIn_600ms_ease-out_forwards];
+    @apply opacity-0 translate-y-6;
+    transition:
+      opacity 700ms ease,
+      transform 700ms ease;
+    will-change: transform, opacity;
+  }
+
+  .fade-in-section.is-visible {
+    @apply opacity-100 translate-y-0;
+  }
+
+  .brand-glow-card {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .brand-glow-card::before {
+    content: '';
+    position: absolute;
+    inset: -30%;
+    background:
+      radial-gradient(circle at 10% 20%, var(--secondary-light), transparent 55%),
+      radial-gradient(circle at 80% 90%, var(--primary-light), transparent 58%);
+    opacity: 0;
+    transform: scale(0.92);
+    transition:
+      opacity 280ms ease,
+      transform 280ms ease;
+    z-index: -1;
+  }
+
+  .brand-glow-card:hover::before {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .brand-image-frame {
+    @apply rounded-3xl ring-1 ring-slate-200/80 dark:ring-white/10;
+    transition:
+      box-shadow 280ms ease,
+      transform 280ms ease;
+  }
+
+  .brand-image-frame:hover {
+    @apply ring-transparent;
+    transform: translateY(-2px);
+    box-shadow:
+      0 0 0 1px color-mix(in srgb, var(--secondary) 20%, transparent),
+      0 0 64px -30px color-mix(in srgb, var(--secondary) 75%, transparent),
+      0 0 92px -38px color-mix(in srgb, var(--primary) 72%, transparent);
+  }
+
+  .hero-orb-shell {
+    position: relative;
+    width: clamp(275px, 64vw, 480px);
+    aspect-ratio: 1 / 1;
+    margin-inline: auto;
+    animation: heroBounce 5s ease-in-out infinite;
+  }
+
+  .hero-orb {
+    position: relative;
+    z-index: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 999px;
+    object-fit: cover;
+    object-position: 54% center;
+    box-shadow:
+      0 0 0 2px color-mix(in srgb, var(--secondary) 40%, transparent),
+      0 0 70px -22px color-mix(in srgb, var(--secondary) 62%, transparent),
+      0 0 100px -32px color-mix(in srgb, var(--primary) 75%, transparent);
+  }
+
+  .hero-orb-shell::before,
+  .hero-orb-shell::after {
+    content: '';
+    position: absolute;
+    inset: -16px;
+    border-radius: 999px;
+    pointer-events: none;
+  }
+
+  .hero-orb-shell::before {
+    border: 1px solid color-mix(in srgb, var(--secondary) 50%, transparent);
+    filter: drop-shadow(0 0 12px color-mix(in srgb, var(--secondary) 35%, transparent));
+    animation: orbitalSpin 9s linear infinite;
+  }
+
+  .hero-orb-shell::after {
+    inset: -34px;
+    border: 1px dashed color-mix(in srgb, var(--primary) 44%, transparent);
+    filter: drop-shadow(0 0 16px color-mix(in srgb, var(--primary) 42%, transparent));
+    animation: orbitalSpinReverse 13s linear infinite;
+  }
+
+  .hero-orb-light {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+    width: 14px;
+    height: 14px;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--secondary) 75%, #ffffff 25%);
+    transform-origin: 0 0;
+    filter: blur(0.3px);
+    box-shadow:
+      0 0 24px color-mix(in srgb, var(--secondary) 80%, transparent),
+      0 0 44px color-mix(in srgb, var(--primary) 44%, transparent);
+    animation: heroLightOrbit 8.5s linear infinite;
+  }
+
+  .hero-orb-light.secondary {
+    width: 10px;
+    height: 10px;
+    background: color-mix(in srgb, var(--primary) 80%, #fff 20%);
+    animation: heroLightOrbitSecondary 11s linear infinite;
+  }
+
+  .form-static-glow {
+    box-shadow:
+      0 0 0 1px color-mix(in srgb, var(--secondary) 20%, transparent),
+      0 0 64px -30px color-mix(in srgb, var(--secondary) 75%, transparent),
+      0 0 92px -38px color-mix(in srgb, var(--primary) 72%, transparent);
+  }
+
+  .landing-section {
+    @apply py-20 sm:py-28 lg:py-32;
+  }
+
+  .landing-surface-a {
+    @apply bg-zinc-100 dark:bg-[#0a0a0a];
+  }
+
+  .landing-surface-b {
+    @apply bg-white dark:bg-[#050505];
+  }
+
+  .landing-eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.22em] text-secondary;
+  }
+
+  .landing-card-dark {
+    @apply rounded-2xl border border-slate-200/90 bg-white/90 shadow-sm dark:border-white/10 dark:bg-zinc-900/45 dark:shadow-none;
+  }
+
+  .service-icon-brand {
+    filter: brightness(0) saturate(100%) invert(48%) sepia(59%) saturate(448%) hue-rotate(112deg) brightness(95%)
+      contrast(89%);
+  }
+
+  .dark .service-icon-brand {
+    filter: brightness(0) saturate(100%) invert(72%) sepia(31%) saturate(459%) hue-rotate(99deg) brightness(95%)
+      contrast(92%);
   }
 }
 
@@ -63,5 +226,53 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes heroBounce {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  35% {
+    transform: translateY(-10px) scale(1.01);
+  }
+  70% {
+    transform: translateY(5px) scale(0.996);
+  }
+}
+
+@keyframes orbitalSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes orbitalSpinReverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes heroLightOrbit {
+  from {
+    transform: rotate(0deg) translateX(clamp(125px, 16vw, 260px));
+  }
+  to {
+    transform: rotate(360deg) translateX(clamp(125px, 16vw, 260px));
+  }
+}
+
+@keyframes heroLightOrbitSecondary {
+  from {
+    transform: rotate(360deg) translateX(clamp(112px, 14vw, 250px));
+  }
+  to {
+    transform: rotate(0deg) translateX(clamp(112px, 14vw, 250px));
   }
 }

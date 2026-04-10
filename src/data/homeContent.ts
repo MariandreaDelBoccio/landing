@@ -18,24 +18,31 @@ export interface TestimonialItem {
 }
 
 export const homeHero = {
-  title: 'AI‑ready biomedical knowledge systems for pharma, biotech, and AI organizations',
+  title: 'We Turn Biomedical Evidence into Knowledge',
   subtitle:
     'Speed up safe and sustainable product development by leveraging the power of AI, knowledge graphs and NLP.',
+} as const
+
+export const homeSolutions = {
+  eyebrow: 'SOLUTIONS',
+  titleBefore: 'AI-ready ',
+  titleHighlight: 'biomedical',
+  titleAfter: ' knowledge systems',
 } as const
 
 export const services: ServiceItem[] = [
   {
     title: 'DISGENET',
     description:
-      'Gain access to the most recent and relevant data on disease genomics to accelerate drug R&D and unlock new precision medicine possibilities.',
-    ctaLabel: 'Visit',
+      'Access curated gene–disease associations and evidence to accelerate target discovery and precision medicine.',
+    ctaLabel: 'Learn more',
     ctaHref: 'https://www.disgenet.com/',
     iconSrc: '/icons/06.svg',
   },
   {
     title: 'Natural Language Processing',
     description:
-      'Our state-of-the-art NLP makes your textual data searchable, analyzable and actionable. We help you speed up informed innovation with data unlocked from text.',
+      'Make biomedical text searchable and actionable with models tuned for scientific language and entities.',
     ctaLabel: 'Learn more',
     ctaHref: 'https://www.medbioinformatics.com/nlp/',
     iconSrc: '/icons/010.svg',
@@ -43,33 +50,55 @@ export const services: ServiceItem[] = [
   {
     title: 'AI & Knowledge Graphs',
     description:
-      'We enable you to reveal insights from complex biological networks providing fine-grained, comprehensive coverage of intricate relationships between biomolecules.',
+      'Map complex molecular relationships in a graph you can query, explain, and integrate with your stack.',
     ctaLabel: 'Learn more',
     ctaHref: 'https://www.medbioinformatics.com/ai-knowledge-graphs/',
     iconSrc: '/icons/011.svg',
   },
   {
-    title: 'Nueva card',
+    title: 'Clinical & real-world intelligence',
     description:
-      'We enable you to reveal insights from complex biological networks providing fine-grained, comprehensive coverage of intricate relationships between biomolecules.',
+      'Combine literature, omics, and translational evidence to support safer, faster development decisions.',
     ctaLabel: 'Learn more',
-    ctaHref: 'https://www.medbioinformatics.com/ai-knowledge-graphs/',
+    ctaHref: '/contact',
     iconSrc: '/icons/011.svg',
   },
 ]
 
+export const disgenetSection = {
+  eyebrow: 'DATABASES & PLATFORMS',
+  titleBefore: 'DISGENET, the world’s most ',
+  titleHighlight: 'reliable',
+  titleAfter: ' gene-disease database',
+  body:
+    'Get immediate access to curated evidence comparable to having synthesized insights from a vast biomedical literature corpus—ready for discovery and downstream AI.',
+  ctaLabel: 'Explore DISGENET',
+  ctaHref: 'https://www.disgenet.com/',
+} as const
+
 export const stats: StatItem[] = [
-  { value: '38K+', label: 'disease associations' },
-  { value: '+8,200', label: 'citations worldwide' },
-  { value: '92%', label: 'NLP F-score' },
-  { value: '2010', label: 'est.' },
+  { value: '38K+', label: 'Gene-disease associations' },
+  { value: '+6,200', label: 'Citations worldwide' },
+  { value: '8%', label: 'Precision uplift' },
+  { value: '188', label: 'Countries served' },
 ]
 
 export const companyIntro = {
-  title: "MedBioinformatics, expanding DISGENET's potential",
-  body: 'MedBioinformatics is built on over 15 years of life science expertise. We unlock the true potential of your data through cutting-edge methods in data analytics, semantic integration, and NLP. This empowers you to develop innovative and safer products, prioritizing human health and well-being.',
-  ctaLabel: 'Explore our story',
+  eyebrow: 'OUR MISSION',
+  titleBefore: "Expanding DISGENET's ",
+  titleHighlight: 'potential',
+  titleAfter: '',
+  body:
+    'MedBioinformatics brings 15+ years of life-science expertise in analytics, semantic integration, and NLP—so you can ship safer, more innovative products with confidence.',
+  ctaLabel: 'Read our story',
   ctaTo: '/about',
+} as const
+
+export const testimonialsHeader = {
+  eyebrow: 'TESTIMONIALS',
+  titleBefore: 'Trusted by ',
+  titleHighlight: 'researchers',
+  titleAfter: ' worldwide',
 } as const
 
 export const testimonials: TestimonialItem[] = [
@@ -81,14 +110,22 @@ export const testimonials: TestimonialItem[] = [
   },
   {
     quote:
-      'We use DISGENET to search for variants that cause rare diseases. The most difficult part of variant searching is finding appropriate references and presenting evidence, and DISGENET’s large and well-structured database makes it easy to find.',
+      'We use DISGENET to search for variants that cause rare diseases. DISGENET’s large and well-structured database makes it easy to find appropriate references and evidence.',
     name: 'June-Young Koh',
     role: 'Chief Research Officer & Head of RARE TFT, Inocras',
   },
   {
     quote:
-      'DISGENET has been a game-changer in our research endeavors. Our project revolves around understanding the consequences of protein misfolding, a phenomenon where proteins fail to adopt their native structure.',
+      'DISGENET has been a game-changer in our research endeavors. Our project revolves around understanding the consequences of protein misfolding and failed native structure adoption.',
     name: 'Maria F. Anglero',
     role: 'Research Assistant, Pennsylvania State University',
   },
 ]
+
+export const contactCta = {
+  titleBefore: 'Build a better tomorrow through ',
+  titleHighlight: 'data',
+  titleAfter: '',
+  subtitle:
+    'Tell us about your data challenges—we’ll help you turn evidence into actionable biomedical intelligence.',
+} as const

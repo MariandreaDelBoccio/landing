@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, ref } from 'vue'
-import { stats } from '../../data/homeContent'
+import { disgenetSection, stats } from '../../data/homeContent'
 import Button from '../ui/Button.vue'
-import Section from '../ui/Section.vue'
 
 const statsGridEl = ref<HTMLElement | null>(null)
 const displayedStats = ref<string[]>(stats.map(() => '0'))
@@ -85,53 +84,52 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <Section as="section" id="disgenet" muted>
-    <div class="mx-auto max-w-7xl">
-      <div class="grid gap-10 lg:grid-cols-2 lg:items-center">
+  <section id="disgenet" class="landing-section landing-surface-b">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid gap-12 lg:grid-cols-2 lg:items-center">
         <div class="fade-in-section">
-          <h2 class="text-3xl font-bold tracking-tight text-primary sm:text-4xl">
-            DISGENET, the world’s most reliable & extensive gene-disease database
+          <p class="landing-eyebrow">{{ disgenetSection.eyebrow }}</p>
+          <h2
+            class="mt-4 text-3xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-4xl lg:text-[2.5rem] lg:leading-tight"
+          >
+            {{ disgenetSection.titleBefore }}<span class="text-secondary">{{ disgenetSection.titleHighlight }}</span>{{ disgenetSection.titleAfter }}
           </h2>
-          <p class="mt-4 max-w-xl text-base leading-relaxed text-slate-600 dark:text-slate-300">
-            Get immediate access to information comparable to having read over 30 million articles.
+          <p class="mt-5 max-w-xl text-base leading-relaxed text-slate-600 dark:text-slate-400">
+            {{ disgenetSection.body }}
           </p>
-          <div class="mt-7">
-            <Button
-              href="https://www.disgenet.com/"
-              variant="success"
-              size="md"
-              class="text-white"
-            >
-              Visit
+          <div class="mt-8">
+            <Button :href="disgenetSection.ctaHref" variant="cta" size="md">
+              {{ disgenetSection.ctaLabel }}
             </Button>
           </div>
         </div>
 
-        <div class="fade-in-section overflow-hidden rounded-3xl ring-1 ring-slate-200 bg-white shadow-soft dark:ring-slate-700 dark:bg-slate-900">
+        <div class="fade-in-section brand-image-frame">
           <img
             src="/images/access-to-information-section.png"
-            alt="DISGENET platform preview"
-            class="h-full w-full object-cover"
+            alt="Researcher reviewing biomedical data on a monitor"
+            class="aspect-[4/3] h-full w-full rounded-3xl object-cover"
           />
         </div>
       </div>
 
-      <div ref="statsGridEl" class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div
+        ref="statsGridEl"
+        class="mt-16 grid gap-4 sm:grid-cols-2 lg:mt-20 lg:grid-cols-4 lg:gap-5"
+      >
         <div
           v-for="(stat, index) in stats"
           :key="`${stat.value}-${stat.label}`"
-          class="fade-in-section rounded-2xl bg-white/70 p-5 ring-1 ring-slate-200 shadow-sm dark:bg-slate-900/85 dark:ring-slate-700"
+          class="fade-in-section landing-card-dark px-5 py-6 text-center sm:px-6"
         >
-          <div class="text-center">
-            <p class="text-4xl font-bold tracking-tight text-secondary">
-              {{ displayedStats[index] ?? stat.value }}
-            </p>
-            <p class="mt-1 text-sm uppercase tracking-wide text-primary font-semibold dark:text-slate-300">
-              {{ stat.label }}
-            </p>
-          </div>
+          <p class="text-4xl font-bold tabular-nums tracking-tight text-secondary sm:text-[2.35rem]">
+            {{ displayedStats[index] ?? stat.value }}
+          </p>
+          <p class="mt-2 text-xs font-medium uppercase tracking-wider text-slate-500 dark:text-slate-500">
+            {{ stat.label }}
+          </p>
         </div>
       </div>
     </div>
-  </Section>
+  </section>
 </template>
