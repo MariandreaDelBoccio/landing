@@ -20,7 +20,7 @@ withDefaults(
 </script>
 
 <template>
-  <component :is="as" :class="muted ? 'bg-white' : 'bg-slate-50'">
+  <component :is="as" :class="muted ? 'bg-white dark:bg-slate-900' : 'bg-slate-50 dark:bg-slate-950'">
     <Container
       :as="containerAs"
       :narrow="narrow"

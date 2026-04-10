@@ -27,10 +27,10 @@ const componentTag = computed(() => {
 
 const variantClass = computed(() => {
   if (props.variant === 'secondary') {
-    return 'bg-white text-slate-700 ring-1 ring-slate-200 hover:bg-slate-50'
+    return 'bg-white text-slate-700 ring-1 ring-slate-200 hover:bg-slate-50 dark:bg-slate-800 dark:text-slate-100 dark:ring-slate-700 dark:hover:bg-slate-700'
   }
   if (props.variant === 'ghost') {
-    return 'bg-transparent text-primary hover:bg-primary-light'
+    return 'bg-transparent text-primary hover:bg-primary-light dark:text-slate-100 dark:hover:bg-slate-800'
   }
   if (props.variant === 'success') {
     return 'bg-secondary text-on-secondary hover:brightness-105'

@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { computed, onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
+import { useTheme } from '../composables/useTheme'
 
 const isMobileMenuOpen = ref(false)
 const route = useRoute()
+const { isDark, isMounted, toggleTheme } = useTheme()
 
 const navigationLinks = [
   { label: 'About', to: '/about' },
@@ -28,8 +30,9 @@ const isActiveLink = (to: string) => {
 
 const headerClass = computed(() => {
   const isHome = route.path === '/'
-  if (isHome && !isScrolled.value) return 'bg-white/50 backdrop-blur-sm'
-  return 'bg-white/90 backdrop-blur-md border-b border-slate-200/70'
+  if (isHome && !isScrolled.value)
+    return 'bg-white/50 backdrop-blur-sm dark:bg-slate-950/50'
+  return 'bg-white/90 backdrop-blur-md border-b border-slate-200/70 dark:bg-slate-950/90 dark:border-slate-800'
 })
 
 const mainClass = computed(() => {
@@ -57,7 +60,7 @@ watch(
 </script>
 
 <template>
-  <div class="min-h-screen bg-white text-slate-800 antialiased">
+  <div class="min-h-screen bg-white text-slate-800 antialiased transition-colors duration-300 dark:bg-slate-950 dark:text-slate-200">
     <header
       class="fixed top-0 left-0 right-0 z-40 w-full"
       :class="headerClass"
@@ -91,12 +94,21 @@ watch(
           </li>
         </ul>
 
-        <div class="hidden items-center gap-4 md:flex ml-4">
+        <div class="hidden items-center gap-3 md:flex ml-4">
+          <button
+            type="button"
+            class="inline-flex h-9 items-center gap-2 rounded-full border border-slate-200 bg-white px-3 text-xs font-semibold uppercase tracking-widest text-slate-700 transition hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
+            :aria-label="isDark ? 'Activar modo claro' : 'Activar modo oscuro'"
+            @click="toggleTheme"
+          >
+            <span aria-hidden="true">{{ isMounted ? (isDark ? '☀' : '🌙') : '◐' }}</span>
+            <span>{{ isMounted ? (isDark ? 'Light' : 'Dark') : 'Theme' }}</span>
+          </button>
           <a
             href="https://www.linkedin.com/"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex h-6 w-6 items-center justify-center rounded-md bg-primary ring-1 ring-slate-200 text-white transition hover:bg-secondary font-bold"
+            class="inline-flex h-6 w-6 items-center justify-center rounded-md bg-primary ring-1 ring-slate-200 text-white transition hover:bg-secondary font-bold dark:ring-slate-700"
             aria-label="LinkedIn"
           >
             in
@@ -105,7 +117,7 @@ watch(
 
         <button
           type="button"
-          class="inline-flex items-center rounded-md p-2 text-slate-600 transition hover:bg-slate-100 md:hidden"
+          class="inline-flex items-center rounded-md p-2 text-slate-600 transition hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800 md:hidden"
           aria-label="Open main menu"
           @click="isMobileMenuOpen = !isMobileMenuOpen"
         >
@@ -129,8 +141,19 @@ watch(
 
       <div
         v-if="isMobileMenuOpen"
-        class="border-t border-slate-200 bg-white px-4 pb-4 pt-3 shadow-sm md:hidden"
+        class="border-t border-slate-200 bg-white px-4 pb-4 pt-3 shadow-sm dark:border-slate-800 dark:bg-slate-950 md:hidden"
       >
+        <div class="mb-3">
+          <button
+            type="button"
+            class="inline-flex h-9 items-center gap-2 rounded-full border border-slate-200 bg-white px-3 text-xs font-semibold uppercase tracking-widest text-slate-700 transition hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
+            :aria-label="isDark ? 'Activar modo claro' : 'Activar modo oscuro'"
+            @click="toggleTheme"
+          >
+            <span aria-hidden="true">{{ isMounted ? (isDark ? '☀' : '🌙') : '◐' }}</span>
+            <span>{{ isMounted ? (isDark ? 'Light' : 'Dark') : 'Theme' }}</span>
+          </button>
+        </div>
         <ul class="space-y-3">
           <li v-for="link in navigationLinks" :key="`mobile-${link.to}`">
             <RouterLink
@@ -138,8 +161,8 @@ watch(
               class="block rounded-md px-3 py-2 text-sm font-medium uppercase tracking-widest transition"
               :class="
                 isActiveLink(link.to)
-                  ? 'bg-primary-light text-primary'
-                  : 'text-slate-700 hover:bg-slate-100'
+                  ? 'bg-primary-light text-primary dark:text-slate-100'
+                  : 'text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800'
               "
               @click="closeMobileMenu"
             >

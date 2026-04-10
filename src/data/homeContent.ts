@@ -18,7 +18,7 @@ export interface TestimonialItem {
 }
 
 export const homeHero = {
-  title: 'Streamlining the journey from complex data to actionable insights',
+  title: 'AI‑ready biomedical knowledge systems for pharma, biotech, and AI organizations',
   subtitle:
     'Speed up safe and sustainable product development by leveraging the power of AI, knowledge graphs and NLP.',
 } as const
@@ -42,6 +42,14 @@ export const services: ServiceItem[] = [
   },
   {
     title: 'AI & Knowledge Graphs',
+    description:
+      'We enable you to reveal insights from complex biological networks providing fine-grained, comprehensive coverage of intricate relationships between biomolecules.',
+    ctaLabel: 'Learn more',
+    ctaHref: 'https://www.medbioinformatics.com/ai-knowledge-graphs/',
+    iconSrc: '/icons/011.svg',
+  },
+  {
+    title: 'Nueva card',
     description:
       'We enable you to reveal insights from complex biological networks providing fine-grained, comprehensive coverage of intricate relationships between biomolecules.',
     ctaLabel: 'Learn more',
