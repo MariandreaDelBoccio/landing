@@ -2,26 +2,61 @@
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 
+import { blogPosts } from '../data/blogPosts'
 import MainLayout from '../layouts/MainLayout.vue'
+import Button from '../components/ui/Button.vue'
 
 const route = useRoute()
 
 const slug = computed(() => String(route.params.slug ?? ''))
+
+const post = computed(() => blogPosts.find((p) => p.slug === slug.value) ?? null)
 </script>
 
 <template>
   <MainLayout>
-    <article class="mx-auto w-full max-w-4xl px-4 py-20 sm:px-6 lg:px-8">
-      <p class="text-sm font-medium uppercase tracking-wide text-blue-600">Article</p>
-      <h1 class="mt-3 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
-        Blog Post
-      </h1>
-      <p class="mt-6 text-base text-slate-600">
-        Ruta dinámica detectada: <span class="font-semibold text-slate-800">{{ slug }}</span>
-      </p>
-      <p class="mt-2 text-base text-slate-600">
-        En el siguiente paso renderizaremos el contenido real de cada post local.
-      </p>
+    <article v-if="post" class="pb-20 pt-24">
+      <header class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <p class="text-xs font-semibold uppercase tracking-wider text-secondary">{{ post.category }}</p>
+        <p class="mt-3 text-sm text-slate-500 dark:text-slate-500">{{ post.date }}</p>
+        <h1 class="mt-4 text-4xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-5xl">
+          {{ post.title }}
+        </h1>
+        <p class="mt-6 text-lg leading-relaxed text-slate-600 dark:text-slate-400">{{ post.excerpt }}</p>
+      </header>
+
+      <div class="fade-in-section mx-auto mt-10 max-w-5xl px-4 sm:px-6 lg:px-8">
+        <div class="brand-image-frame">
+          <img
+            :src="post.image"
+            :alt="post.title"
+            class="aspect-[21/9] h-full w-full rounded-3xl object-cover sm:aspect-[2.4/1]"
+            loading="eager"
+          />
+        </div>
+      </div>
+
+      <div class="mx-auto mt-12 max-w-3xl space-y-5 px-4 text-base leading-relaxed text-slate-700 dark:text-slate-300 sm:px-6 lg:px-8">
+        <p>{{ post.content }}</p>
+        <p class="text-slate-600 dark:text-slate-400">
+          This article is a preview from the local content catalog. Replace with CMS-driven HTML or MD when you connect
+          your editorial workflow.
+        </p>
+      </div>
+
+      <div class="mx-auto mt-14 max-w-3xl px-4 sm:px-6 lg:px-8">
+        <Button to="/blog" variant="secondary" size="md">← Back to blog</Button>
+      </div>
     </article>
+
+    <section v-else class="mx-auto max-w-3xl px-4 py-28 sm:px-6 lg:px-8">
+      <h1 class="text-3xl font-bold text-slate-900 dark:text-white">Article not found</h1>
+      <p class="mt-4 text-slate-600 dark:text-slate-400">
+        We could not find a post for “{{ slug }}”. Check the URL or return to the blog index.
+      </p>
+      <div class="mt-8">
+        <Button to="/blog" variant="cta" size="md">Go to blog</Button>
+      </div>
+    </section>
   </MainLayout>
 </template>

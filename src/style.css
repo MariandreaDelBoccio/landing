@@ -109,6 +109,10 @@
       0 0 92px -38px color-mix(in srgb, var(--primary) 72%, transparent);
   }
 
+  .brand-image-frame.brand-image-frame--card-top {
+    border-radius: 1rem 1rem 0 0;
+  }
+
   .hero-orb-shell {
     position: relative;
     width: clamp(275px, 64vw, 480px);

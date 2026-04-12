@@ -5,8 +5,34 @@ import { contactCta } from '../../data/homeContent'
 import Button from '../ui/Button.vue'
 import ContactForm from './ContactForm.vue'
 
+const props = withDefaults(
+  defineProps<{
+    titleBefore?: string
+    titleHighlight?: string
+    titleAfter?: string
+    subtitle?: string
+    hideCompany?: boolean
+    submitLabel?: string
+  }>(),
+  {
+    titleBefore: undefined,
+    titleHighlight: undefined,
+    titleAfter: undefined,
+    subtitle: undefined,
+    hideCompany: true,
+    submitLabel: 'Send message',
+  },
+)
+
 const { isDark } = useTheme()
 const formTone = computed(() => (isDark.value ? 'dark' : 'light'))
+
+const copy = computed(() => ({
+  titleBefore: props.titleBefore ?? contactCta.titleBefore,
+  titleHighlight: props.titleHighlight ?? contactCta.titleHighlight,
+  titleAfter: props.titleAfter ?? contactCta.titleAfter,
+  subtitle: props.subtitle ?? contactCta.subtitle,
+}))
 </script>
 
 <template>
@@ -20,18 +46,18 @@ const formTone = computed(() => (isDark.value ? 'dark' : 'light'))
             <h2
               class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-4xl lg:text-[2.35rem] lg:leading-tight"
             >
-              {{ contactCta.titleBefore }}<span class="text-secondary">{{ contactCta.titleHighlight }}</span>{{ contactCta.titleAfter }}
+              {{ copy.titleBefore }}<span class="text-secondary">{{ copy.titleHighlight }}</span>{{ copy.titleAfter }}
             </h2>
             <p class="mt-4 max-w-md text-base leading-relaxed text-slate-600 dark:text-slate-400">
-              {{ contactCta.subtitle }}
+              {{ copy.subtitle }}
             </p>
           </div>
 
           <div>
-            <ContactForm :tone="formTone" :hide-company="true" :filled-fields="true">
+            <ContactForm :tone="formTone" :hide-company="hideCompany" :filled-fields="true">
               <template #actions>
                 <div class="pt-2">
-                  <Button type="submit" variant="cta" size="md"> Send message </Button>
+                  <Button type="submit" variant="cta" size="md">{{ submitLabel }}</Button>
                 </div>
               </template>
             </ContactForm>

@@ -1,5 +1,9 @@
 <script setup lang="ts">
+import { RouterLink } from 'vue-router'
+
 import { homeSolutions, services } from '../../data/homeContent'
+
+const isInternal = (href: string) => href.startsWith('/') && !href.startsWith('//')
 </script>
 
 <template>
@@ -33,7 +37,16 @@ import { homeSolutions, services } from '../../data/homeContent'
             {{ service.description }}
           </p>
           <div class="mt-6">
+            <RouterLink
+              v-if="isInternal(service.ctaHref)"
+              :to="service.ctaHref"
+              class="inline-flex items-center gap-1 text-sm font-semibold text-secondary transition hover:gap-2"
+            >
+              {{ service.ctaLabel }}
+              <span aria-hidden="true">→</span>
+            </RouterLink>
             <a
+              v-else
               :href="service.ctaHref"
               class="inline-flex items-center gap-1 text-sm font-semibold text-secondary transition hover:gap-2"
             >

@@ -44,7 +44,7 @@ export const services: ServiceItem[] = [
     description:
       'Make biomedical text searchable and actionable with models tuned for scientific language and entities.',
     ctaLabel: 'Learn more',
-    ctaHref: 'https://www.medbioinformatics.com/nlp/',
+    ctaHref: '/nlp',
     iconSrc: '/icons/010.svg',
   },
   {
@@ -52,7 +52,7 @@ export const services: ServiceItem[] = [
     description:
       'Map complex molecular relationships in a graph you can query, explain, and integrate with your stack.',
     ctaLabel: 'Learn more',
-    ctaHref: 'https://www.medbioinformatics.com/ai-knowledge-graphs/',
+    ctaHref: '/ai-knowledge-graphs',
     iconSrc: '/icons/011.svg',
   },
   {

@@ -21,8 +21,10 @@ const latestPosts = computed(() => blogPosts.slice(0, 3))
     </div>
 
     <Grid :cols="3">
-      <Card v-for="post in latestPosts" :key="post.id" class="fade-in-section overflow-hidden !p-0">
-        <img :src="post.image" :alt="post.title" class="h-44 w-full object-cover" />
+      <Card v-for="post in latestPosts" :key="post.id" class="fade-in-section !p-0">
+        <div class="brand-image-frame brand-image-frame--card-top">
+          <img :src="post.image" :alt="post.title" class="h-44 w-full rounded-t-2xl object-cover" />
+        </div>
         <div class="p-6">
           <p class="text-xs font-semibold uppercase tracking-wide text-blue-600">{{ post.category }}</p>
           <h3 class="mt-3 text-xl font-semibold text-slate-900">

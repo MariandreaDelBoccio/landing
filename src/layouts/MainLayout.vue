@@ -26,6 +26,8 @@ const { isDark, isMounted, toggleTheme } = useTheme();
 const navigationLinks: NavLink[] = [
   { label: "About", to: "/about" },
   { label: "Services", to: { path: "/", hash: "#services" } },
+  { label: "NLP", to: "/nlp" },
+  { label: "AI & Graphs", to: "/ai-knowledge-graphs" },
   { label: "Blog", href: BLOG_EXTERNAL_URL },
 ];
 
@@ -187,7 +189,7 @@ onBeforeUnmount(() => {
             <span>{{ isMounted ? (isDark ? "Light" : "Dark") : "Theme" }}</span>
           </button>
           <a
-            href="https://www.linkedin.com/"
+            href="https://www.linkedin.com/company/medbioinformatics/about/"
             target="_blank"
             rel="noopener noreferrer"
             class="inline-flex h-6 w-6 items-center justify-center rounded-md bg-primary ring-1 ring-slate-200 text-white transition hover:bg-secondary font-bold dark:ring-slate-700"
@@ -359,15 +361,15 @@ onBeforeUnmount(() => {
               class="block text-slate-300 transition hover:text-secondary"
               >DISGENET</a
             >
-            <a
-              href="https://www.medbioinformatics.com/nlp/"
+            <RouterLink
+              to="/nlp"
               class="block text-slate-300 transition hover:text-secondary"
-              >NLP</a
+              >NLP</RouterLink
             >
-            <a
-              href="https://www.medbioinformatics.com/ai-knowledge-graphs/"
+            <RouterLink
+              to="/ai-knowledge-graphs"
               class="block text-slate-300 transition hover:text-secondary"
-              >AI & Knowledge Graphs</a
+              >AI & Knowledge Graphs</RouterLink
             >
           </div>
 

@@ -1,10 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 import AboutPage from '../pages/About.vue'
+import AiKnowledgeGraphsPage from '../pages/AiKnowledgeGraphs.vue'
 import BlogPage from '../pages/Blog.vue'
 import BlogPostPage from '../pages/BlogPost.vue'
 import ContactPage from '../pages/Contact.vue'
 import HomePage from '../pages/Home.vue'
+import NlpPage from '../pages/Nlp.vue'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -27,6 +29,26 @@ const router = createRouter({
         title: 'About | MedBioinformatics',
         description:
           'Learn about MedBioinformatics, our mission, and our expertise in biomedical data science and AI.',
+      },
+    },
+    {
+      path: '/nlp',
+      name: 'nlp',
+      component: NlpPage,
+      meta: {
+        title: 'Natural Language Processing | MedBioinformatics',
+        description:
+          'Biomedical NLP to make scientific text searchable, analyzable, and ready for analytics and AI.',
+      },
+    },
+    {
+      path: '/ai-knowledge-graphs',
+      name: 'ai-knowledge-graphs',
+      component: AiKnowledgeGraphsPage,
+      meta: {
+        title: 'AI & Knowledge Graphs | MedBioinformatics',
+        description:
+          'Design and deploy biomedical knowledge graphs with explainable AI and DISGENET-grade evidence.',
       },
     },
     {
