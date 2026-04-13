@@ -38,10 +38,10 @@ withDefaults(
       <div class="fade-in-section max-w-4xl" :class="align === 'center' ? 'mx-auto' : ''">
         <SharedBadge v-if="eyebrow" variant="secondary" size="sm">{{ eyebrow }}</SharedBadge>
         <h1
-          class="mt-4 text-4xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-5xl lg:text-[3.1rem] lg:leading-[1.12]"
+          class="mt-4 w-full max-w-4xl bg-gradient-to-br from-[var(--primary)] to-[var(--secondary)] bg-clip-text pb-0.5 text-4xl font-bold tracking-tight text-transparent sm:text-5xl lg:text-[3.5rem] lg:leading-[1.12]"
+          :class="align === 'center' ? 'mx-auto' : ''"
         >
-          {{ titleBefore }}<span v-if="titleHighlight" class="text-secondary">{{ titleHighlight }}</span
-          >{{ titleAfter }}
+          {{ titleBefore }}<template v-if="titleHighlight">{{ titleHighlight }}</template>{{ titleAfter }}
         </h1>
         <p
           v-if="subtitle"

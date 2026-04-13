@@ -1,8 +1,13 @@
 <script setup lang="ts">
+import { CheckIcon } from '@heroicons/vue/24/outline'
+import { RouterLink } from 'vue-router'
+
 import {
   aboutCta,
+  aboutDisgenetOrigins,
   aboutHero,
   aboutMission,
+  aboutPlatformSection,
   aboutStats,
   leadershipIntro,
   leadershipTeam,
@@ -36,14 +41,75 @@ import PageHero from '../components/ui/PageHero.vue'
             <p v-for="(p, i) in aboutMission.paragraphs" :key="i">{{ p }}</p>
           </div>
         </div>
+      </div>
+    </section>
 
-        <div class="fade-in-section brand-image-frame">
-          <img
-            src="/images/team.png"
-            alt="MedBioInformatics team in Barcelona"
-            class="aspect-[21/9] h-full w-full rounded-3xl object-cover object-center sm:aspect-[24/9]"
-            loading="lazy"
-          />
+    <section class="landing-section landing-surface-b">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <div class="fade-in-section">
+          <h2
+            class="text-3xl font-bold tracking-tight text-transparent sm:text-4xl lg:text-[2.35rem] lg:leading-tight bg-gradient-to-br from-[var(--primary)] to-[var(--secondary)] bg-clip-text"
+          >
+            {{ aboutPlatformSection.titleBefore }}{{ aboutPlatformSection.titleAfter }}
+          </h2>
+          <div class="mt-8 space-y-5 text-base leading-relaxed text-slate-600 dark:text-slate-400">
+            <p v-for="(p, i) in aboutPlatformSection.paragraphs" :key="i">{{ p }}</p>
+          </div>
+          <ul class="mt-8 space-y-5">
+            <li
+              v-for="item in aboutPlatformSection.bullets"
+              :key="item.lead"
+              class="flex gap-3 text-base leading-relaxed text-slate-700 dark:text-slate-300"
+            >
+              <CheckIcon class="mt-0.5 h-6 w-6 shrink-0 text-secondary" aria-hidden="true" />
+              <span
+                ><span class="font-semibold text-slate-900 dark:text-white">{{ item.lead }}</span>
+                — {{ item.body }}</span
+              >
+            </li>
+          </ul>
+          <blockquote
+            class="fade-in-section mt-10 rounded-2xl border border-slate-200/90 bg-gradient-to-b from-slate-50 to-slate-100/80 p-6 text-base italic leading-relaxed text-slate-700 shadow-sm dark:border-white/10 dark:from-zinc-900/80 dark:to-zinc-950/80 dark:text-slate-300 sm:p-8"
+          >
+            {{ aboutPlatformSection.quote }}
+          </blockquote>
+          <div
+            class="fade-in-section mt-5 rounded-xl border border-slate-200/90 bg-slate-50/90 px-5 py-4 text-center dark:border-white/10 dark:bg-zinc-900/60"
+          >
+            <RouterLink
+              to="/contact"
+              class="text-base font-bold italic text-primary transition hover:text-secondary dark:text-slate-100 dark:hover:text-secondary"
+            >
+              {{ aboutPlatformSection.ctaPhrase }}
+            </RouterLink>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="landing-section landing-surface-a">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-12 lg:grid-cols-2 lg:items-center">
+          <div class="fade-in-section order-2 lg:order-1">
+            <h2
+              class="text-3xl font-bold tracking-tight text-transparent sm:text-4xl lg:text-[2.35rem] lg:leading-tight bg-gradient-to-br from-[var(--primary)] to-[var(--secondary)] bg-clip-text"
+            >
+              {{ aboutDisgenetOrigins.titleBefore }}{{ aboutDisgenetOrigins.titleAfter }}
+            </h2>
+            <div class="mt-6 space-y-5 text-base leading-relaxed text-slate-600 dark:text-slate-400">
+              <p v-for="(p, i) in aboutDisgenetOrigins.paragraphs" :key="i">{{ p }}</p>
+            </div>
+          </div>
+          <div class="fade-in-section order-1 lg:order-2">
+            <div class="brand-image-frame">
+              <img
+                :src="aboutDisgenetOrigins.imageSrc"
+                :alt="aboutDisgenetOrigins.imageAlt"
+                class="aspect-[5/3] h-full w-full rounded-3xl object-cover object-center"
+                loading="lazy"
+              />
+            </div>
+          </div>
         </div>
 
         <div class="mt-12 grid gap-4 sm:grid-cols-3">

@@ -16,7 +16,7 @@ export const nlpPage = {
   titleHighlight: 'searchable',
   titleAfter: ', analyzable and actionable',
   subtitle:
-    'Scientific language is nuanced. Our NLP stack extracts entities, relations, and evidence from literature and internal documents—so search, analytics, and downstream AI start from clean, traceable facts.',
+    'Imagine the power of finding all the relevant data, in a fraction of the time.',
   primaryCta: { label: 'Request a demo', href: '/contact' as const },
   infographic: {
     src: '/Infographics/Infographic NLP compressed.mp4',

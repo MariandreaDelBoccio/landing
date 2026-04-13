@@ -25,7 +25,6 @@ const { isDark, isMounted, toggleTheme } = useTheme();
 
 const navigationLinks: NavLink[] = [
   { label: "About", to: "/about" },
-  { label: "Services", to: { path: "/", hash: "#services" } },
   { label: "NLP", to: "/nlp" },
   { label: "AI & Graphs", to: "/ai-knowledge-graphs" },
   { label: "Blog", href: BLOG_EXTERNAL_URL },

@@ -9,7 +9,7 @@ export const contactHero = {
 
 export const contactFindUs = {
   eyebrow: 'FIND US',
-  title: 'Barcelona & remote',
+  title: 'Barcelona',
   company: 'MedBioInformatics Solutions',
   lines: [
     'Barcelona Biomedical Research Park area',
