@@ -34,9 +34,6 @@ import PageHero from '../components/ui/PageHero.vue'
                   {{ post.title }}
                 </RouterLink>
               </h2>
-              <p class="mt-3 line-clamp-3 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
-                {{ post.excerpt }}
-              </p>
               <div class="mt-6">
                 <RouterLink
                   :to="`/blog/${post.slug}`"

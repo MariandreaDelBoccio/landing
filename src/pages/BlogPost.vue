@@ -22,7 +22,17 @@ const post = computed(() => blogPosts.find((p) => p.slug === slug.value) ?? null
         <h1 class="mt-4 text-4xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-5xl">
           {{ post.title }}
         </h1>
-        <p class="mt-6 text-lg leading-relaxed text-slate-600 dark:text-slate-400">{{ post.excerpt }}</p>
+        <p class="mt-6 text-lg leading-relaxed text-slate-600 dark:text-slate-400">
+          <a
+            :href="post.cta.href"
+            class="font-semibold text-secondary underline-offset-4 transition hover:underline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {{ post.cta.label }}
+          </a>
+          <span class="font-normal text-slate-600 dark:text-slate-400"> — open the full article on the publisher site.</span>
+        </p>
       </header>
 
       <div class="fade-in-section mx-auto mt-10 max-w-5xl px-4 sm:px-6 lg:px-8">
@@ -34,14 +44,6 @@ const post = computed(() => blogPosts.find((p) => p.slug === slug.value) ?? null
             loading="eager"
           />
         </div>
-      </div>
-
-      <div class="mx-auto mt-12 max-w-3xl space-y-5 px-4 text-base leading-relaxed text-slate-700 dark:text-slate-300 sm:px-6 lg:px-8">
-        <p>{{ post.content }}</p>
-        <p class="text-slate-600 dark:text-slate-400">
-          This article is a preview from the local content catalog. Replace with CMS-driven HTML or MD when you connect
-          your editorial workflow.
-        </p>
       </div>
 
       <div class="mx-auto mt-14 max-w-3xl px-4 sm:px-6 lg:px-8">

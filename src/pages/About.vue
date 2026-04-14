@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { CheckIcon } from '@heroicons/vue/24/outline'
+import { CheckIcon, EnvelopeIcon } from '@heroicons/vue/24/outline'
 import { RouterLink } from 'vue-router'
 
 import {
@@ -25,6 +25,7 @@ import PageHero from '../components/ui/PageHero.vue'
       :title-highlight="aboutHero.titleHighlight"
       :title-after="aboutHero.titleAfter"
       :subtitle="aboutHero.subtitle"
+      :video="aboutHero.video"
     />
 
     <section class="landing-section landing-surface-a">
@@ -167,6 +168,16 @@ import PageHero from '../components/ui/PageHero.vue'
                   :aria-label="`LinkedIn — ${person.name}`"
                 >
                   in
+                </a>
+                <a
+                  v-if="person.mail"
+                  :href="`mailto:${person.mail}`"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-slate-200 text-xs font-bold text-primary transition hover:border-secondary hover:text-secondary dark:border-white/15 dark:text-white"
+                  :aria-label="`LinkedIn — ${person.name}`"
+                >
+                  <EnvelopeIcon class="h-5 w-5" />
                 </a>
               </div>
             </div>

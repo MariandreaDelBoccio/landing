@@ -3,9 +3,11 @@ export interface LeaderProfile {
   title: string
   image: string
   linkedin?: string
+  mail?: string
 }
 
 export const aboutHero = {
+  video: { src: '/images/about-hero.mp4', alt: 'MedBioinformatics about video', poster: '/images/still-medbio.jpg' },
   eyebrow: 'ABOUT MEDBIOINFORMATICS',
   titleBefore: 'Evidence-led teams building ',
   titleHighlight: 'trusted',
@@ -92,24 +94,29 @@ export const leadershipTeam: LeaderProfile[] = [
     title: 'Co-Founder & Head of Bioinformatics',
     image: '/images/leadership-team/Janet.jpg',
     linkedin: 'https://www.linkedin.com/company/medbioinformatics/',
+    mail: 'janet.pinero@disgenet.com',
+
   },
   {
     name: 'Dr. Laura Furlong',
     title: 'Co-Founder & Chief Scientific Officer',
     image: '/images/leadership-team/Laura.jpg',
     linkedin: 'https://www.linkedin.com/company/medbioinformatics/',
+    mail: 'laura.furlong@disgenet.com',
   },
   {
     name: 'Dr. Ferran Sanz',
     title: 'Co-Founder & Advisor',
     image: '/images/leadership-team/Ferran.jpg',
     linkedin: 'https://www.linkedin.com/company/medbioinformatics/',
+    mail: 'ferran.sanz@disgenet.com',
   },
   {
     name: 'Felix Slager',
     title: 'Chief Executive Officer',
     image: '/images/leadership-team/Felix.jpg',
     linkedin: 'https://www.linkedin.com/company/medbioinformatics/',
+    mail: 'felix.slager@disgenet.com',
   },
 ]
 

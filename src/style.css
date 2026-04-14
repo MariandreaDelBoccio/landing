@@ -136,6 +136,10 @@
       0 0 100px -32px color-mix(in srgb, var(--primary) 75%, transparent);
   }
 
+  .hero-orb-nlp {
+    object-position: 49% 30%;
+  }
+
   .hero-orb-shell::before,
   .hero-orb-shell::after {
     content: '';

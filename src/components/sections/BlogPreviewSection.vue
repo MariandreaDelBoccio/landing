@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import { RouterLink } from 'vue-router'
 
 import { blogPosts } from '../../data/blogPosts'
 import Card from '../ui/Card.vue'

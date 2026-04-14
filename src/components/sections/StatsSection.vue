@@ -1,7 +1,13 @@
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, ref } from 'vue'
-import { disgenetSection, stats } from '../../data/homeContent'
+import { disgenetSection } from '../../data/homeContent'
 import Button from '../ui/Button.vue'
+import type { ServiceStat } from '../../data/servicePagesContent';
+
+const { stats } = defineProps<{
+  stats: ServiceStat[];
+  eyebrow?: string;
+}>()
 
 const statsGridEl = ref<HTMLElement | null>(null)
 const displayedStats = ref<string[]>(stats.map(() => '0'))
@@ -88,7 +94,8 @@ onBeforeUnmount(() => {
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="grid gap-12 lg:grid-cols-2 lg:items-center">
         <div class="fade-in-section">
-          <p class="landing-eyebrow">{{ disgenetSection.eyebrow }}</p>
+          <p v-if="eyebrow" class="landing-eyebrow">{{ eyebrow }}</p>
+          <p v-else class="landing-eyebrow">{{ disgenetSection.eyebrow }}</p>
           <h2
             class="mt-4 text-3xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-4xl lg:text-[2.5rem] lg:leading-tight"
           >

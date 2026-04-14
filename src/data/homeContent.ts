@@ -34,26 +34,26 @@ export const services: ServiceItem[] = [
   {
     title: "DISGENET",
     description:
-      "Access curated gene–disease associations and evidence to accelerate target discovery and precision medicine.",
-    ctaLabel: "Learn more",
+      "Gain access to the knowledge backbone that gives AI models the structured genetic evidence they need to reason, not just correlate.",
+    ctaLabel: "Visit",
     ctaHref: "https://www.disgenet.com/",
-    iconSrc: "/icons/06.svg",
+    iconSrc: "/icons/045.svg",
   },
   {
     title: "Natural Language Processing",
     description:
-      "Make biomedical text searchable and actionable with models tuned for scientific language and entities.",
+      "Our state-of the-art NLP solutions make your textual data searchable, analyzable and actionable. We help you speed up informed innovation with data unlocked from text.",
     ctaLabel: "Learn more",
     ctaHref: "/nlp",
-    iconSrc: "/icons/010.svg",
+    iconSrc: "/icons/050.svg",
   },
   {
     title: "AI & Knowledge Graphs",
     description:
-      "Map complex molecular relationships in a graph you can query, explain, and integrate with your stack.",
+      "We enable you to reveal insights from complex biological networks providing fine-grained, comprehensive coverage of intricate relationships between biomolecules.",
     ctaLabel: "Learn more",
     ctaHref: "/ai-knowledge-graphs",
-    iconSrc: "/icons/011.svg",
+    iconSrc: "/icons/038.svg",
   },
   {
     title: "Clinical & real-world intelligence",

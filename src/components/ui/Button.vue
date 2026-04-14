@@ -36,7 +36,7 @@ const variantClass = computed(() => {
     return 'bg-secondary text-on-secondary hover:brightness-105 hover:shadow-[0_0_0_1px_var(--secondary-light),0_12px_35px_-14px_var(--secondary)]'
   }
   if (props.variant === 'cta') {
-    return 'bg-secondary text-slate-900 shadow-md hover:brightness-110 dark:text-slate-950 hover:shadow-[0_0_0_1px_var(--secondary-light),0_14px_40px_-12px_var(--secondary)]'
+    return 'bg-secondary text-white shadow-md hover:brightness-110 dark:text-slate-950 hover:shadow-[0_0_0_1px_var(--secondary-light),0_14px_40px_-12px_var(--secondary)]'
   }
   return 'bg-primary text-white hover:bg-primary-light hover:shadow-[0_0_0_1px_var(--primary-light),0_12px_35px_-14px_var(--primary)]'
 })
